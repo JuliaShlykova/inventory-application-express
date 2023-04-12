@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const ratelimit = require('express-rate-limit');
 
 var indexRouter = require('./routes/index');
 
@@ -16,6 +17,13 @@ const main = async () => {
   await mongoose.connect(process.env.MONGODB_URI);
 }
 main().catch(err=>console.log(err));
+
+//limit requests
+const limiter = rateLimit({
+  windowMs: 1*60*1000,//1 minute
+  max:20//20 requests for each IP
+});
+app.use(limiter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
