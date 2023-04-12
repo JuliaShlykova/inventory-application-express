@@ -1,11 +1,15 @@
-require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-const ratelimit = require('express-rate-limit');
+const rateLimit = require('express-rate-limit');
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 
 var indexRouter = require('./routes/index');
 
