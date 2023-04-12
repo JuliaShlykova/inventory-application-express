@@ -1,0 +1,19 @@
+extends layout 
+
+block additionNav
+  hr
+  li
+    a(href=category.url+"/update") Update this category 
+  li
+    a(href=category.url+"/delete") Delete this category
+block content
+  h2 Category: #{category.name}
+  img.category-image(src=category.img_src)
+  h3 Description
+  p.description=category.description_decoded 
+  h3 Items
+  div.item-list 
+    for item in items
+      a.item(href=item.url)
+        p=item.name
+

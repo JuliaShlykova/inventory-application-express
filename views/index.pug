@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div#category-container
+    for category in categories 
+      a(href=category.url title=category.description)
+        div.category
+          img(src=category.img_src)
+          p=category.name

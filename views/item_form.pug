@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+  h2=title 
+  form(method="POST" action="")
+    label(for="item_name") Title:
+    input#item_name(type="text" name="item_name" value=(item===undefined?"":item.name) maxLength=40 autocomplete="off" required=true)
+    label(for="item_description") Description: 
+    textarea#item_description(name="item_description" maxLength=400 required=true) #{(item===undefined)?"":item.description_decoded} 
+    label(for="item_quantity") Quantity: 
+    input#item_quantity(type="number" name="item_quantity" value=(item===undefined?"":item.quantity) required=true)
+    label(for="item_category") Category: 
+    select#item_category(type="select" name="item_category" required=true)
+      option(value="") Select category for the item
+      for category in categories
+        if item 
+          option(value=category._id selected=(item.category._id.toString()===category._id.toString())) #{category.name}
+        else 
+          option(value=category._id) #{category.name}
+    label(for="item_price") Price (usd): 
+    input#item_price(type="number" name="item_price" min="0" step="0.01" value=(item===undefined?"":item.price.toString()) required=true)
+    button(type="submit")=title 
+  if errors 
+    ul#errors 
+      for error in errors 
+        li=error.msg

@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+  h2 Delete Item: #{item.name}
+  p Are you sure you want to delete this item?
+  form(method="POST" action="")
+    input(type="hidden" name="itemid" value=item._id required=true)
+    input(type="hidden" name="categoryid" value=item.category._id required=true)
+    div#buttons
+      button(type="submit") Delete
+      a#change-mind(href=item.url) No, I've changed my mind

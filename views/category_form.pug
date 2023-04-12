@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  h2=title
+  form(method="POST" action="")
+    label(for="category_name") Title: 
+    input#category_name(type="text" name="category_name" required=true value=(category===undefined?'':category.name) maxLength=40 autocomplete="off")
+    label(for="category_icon") Icon: 
+    select#category_icon(type="select" name="category_icon" required=true)
+      option(value="") Select icon for the category
+      for icon in imgList 
+        if category 
+          option(value=icon selected=(category.icon===icon)) #{icon}
+        else 
+          option(value=icon) #{icon}
+    label(for="category_description") Description:
+    textarea#category_description(type="textarea" name="category_description" required=true) #{category===undefined?'':category.description_decoded}
+    button(type="submit")=title
+  if errors 
+    ul#errors 
+     for error in errors 
+      li=error.msg

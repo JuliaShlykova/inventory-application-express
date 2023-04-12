@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='icon' href='/zombie-icon.svg')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header 
+      h1 ZOMBIE APOCALYPSE
+      p inventory
+      div#header-line
+    main 
+      nav
+        ul.sidebar-nav
+          li 
+            a(href='/') Home 
+          hr
+          li 
+            a(href='/category/create') Create new category
+          li
+            a(href='/item/create') Create new item
+          block additionNav
+      div#content
+        block content

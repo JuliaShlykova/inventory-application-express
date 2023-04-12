@@ -1,0 +1,18 @@
+extends layout 
+
+block additionNav
+  hr
+  li
+    a(href=item.url+"/update") Update this item
+  li
+    a(href=item.url+"/delete") Delete this item
+block content 
+  h2=item.name
+  h3 Description 
+  p=item.description_decoded
+  h3 Details 
+  ul#item-details 
+    li Category: 
+      a(href=item.category.url) #{item.category.name}
+    li Quantity: #{item.quantity}
+    li Price: $#{item.price}
