@@ -1,5 +1,5 @@
 # Inventory Application
-To see the website visit []() .
+To see the website visit [zombie-inventory-application](https://zombie-inventory-application.onrender.com) .
 ## Description
 This project is the part of [The Odin Project](https://www.theodinproject.com/). It represents inventory management with possibility for the user to perform CRUD operations with the database:
 - create a category and an item;
